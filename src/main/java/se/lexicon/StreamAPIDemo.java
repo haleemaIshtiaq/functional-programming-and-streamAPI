@@ -90,7 +90,31 @@ public class StreamAPIDemo {
 
         IO.println("Inactive people older than 30 ");
         inactiveOver30.forEach(p -> IO.println(p.getName()));
-    }
 
 
+    // Task 7: Distinct and Sorting
+
+    //Get a sorted list of unique cities.
+    List<String> cities = people.stream()
+            .map(p -> p.getCity())
+            .distinct()
+            .sorted()
+            .toList();
+
+IO.println("Unique sorted cities: " + cities);
+cities.forEach(s -> IO.println(s));
+
+
+
+//Get a sorted list of unique first letters of names.
+    List<String> firstLetters = people.stream()
+                .map(p -> p.getName().substring(0, 1))
+                .distinct()
+                .sorted()
+                .toList();
+
+        IO.println("Unique first letters: " + firstLetters);
+
+
+}
 }
