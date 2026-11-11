@@ -15,6 +15,13 @@ public class Main {
     static PersonAction  sendEmail = p-> IO.println("Sent email to " +p.getName());
 
 
+    //Combined rules
+
+    static PersonRule activeAndAdult = activePeople.and(adultPeople);
+    static PersonRule adultOrStockholm = adultPeople.or(livesInStockholm);
+    static PersonRule notActive = activePeople.negate();
+
+
     static void main() {
         List<Person> people = List.of(
                 new Person("Amina", 22, "Stockholm", true),
@@ -32,13 +39,24 @@ public class Main {
         IO.println("People living in Stockholm: " + filterPeople(people, livesInStockholm));
 
 
-        // Tgask 4: Applying actions
+        // Task 4: Applying actions
         IO.println("\n--- Applying actions ---");
         IO.println("Print names:");
         applyPersonAction(people, names);
 
         IO.println("Send emails:");
         applyPersonAction(people, sendEmail);
+
+
+        // Task 5: Combined rules
+        IO.println("Active AND Adult:");
+        IO.println(filterPeople(people, activeAndAdult));
+
+        IO.println("Adult OR Stockholm:");
+        IO.println(filterPeople(people, adultOrStockholm));
+
+        IO.println("Not Active:");
+        IO.println(filterPeople(people, notActive));
 
 
 
