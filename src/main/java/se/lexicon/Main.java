@@ -59,7 +59,17 @@ public class Main {
         IO.println(filterPeople(people, notActive));
 
 
+     //Task 6: Reusable processor
+        // Find all adults
+        List<Person> adults = PersonProcessor.findPeople(people, adultPeople);
+        IO.println("Adults:"  +adults);
+       // for (Person p : adults) {
+           // IO.println(p.getName());
+       // }
 
+// Print names of active people
+        IO.println("Active people:");
+        PersonProcessor.applyToMatching(people, activePeople, names);
 
     }
 
