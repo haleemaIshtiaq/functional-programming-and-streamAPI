@@ -115,6 +115,22 @@ cities.forEach(s -> IO.println(s));
 
         IO.println("Unique first letters: " + firstLetters);
 
+// Task 8 : Mapping and Formatting
 
+//Create a list of strings like: Name (age) - city
+        List<String> formattedPeople = people.stream()
+                .map(p -> p.getName() + " (" + p.getAge() + ") - " + p.getCity())
+                .toList();
+
+        formattedPeople.forEach(s -> IO.println(s));
+
+
+//Create a list of emails like: name.toLowerCase() + "@example.com"
+
+        List<String> emails = people.stream()
+                .map(p -> p.getName().toLowerCase() + "@example.com")
+                .toList();
+
+        emails.forEach(s -> IO.println(s));
 }
 }
