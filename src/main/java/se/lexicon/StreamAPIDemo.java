@@ -57,5 +57,40 @@ public class StreamAPIDemo {
 
         IO.println("First active person in Stockholm:");
         firstPerson.ifPresent(p -> IO.println(p.getName()));
+
+
+        // Task 6: Multiple filters
+
+        //Active adults
+        List<Person> activeAdults = people.stream()
+                .filter(p -> p.isActive())
+                .filter(p-> p.getAge()>=18)
+                .toList();
+
+        IO.println("Active Adults: ");
+        activeAdults.forEach(p -> IO.println(p.getName()));
+        activeAdults.forEach(p -> IO.println( p.toString()));
+
+        //Active people in Stockholm
+        List<Person> activeAndStockholm = people.stream()
+                .filter(p -> p.isActive())
+                .filter(p-> p.getCity().equalsIgnoreCase("Stockholm"))
+                .toList();
+
+        IO.println("Active people in Stockholm: ");
+        activeAndStockholm.forEach(p -> IO.println(p.getName()));
+
+
+        //Inactive people older than 30
+
+        List<Person> inactiveOver30 = people.stream()
+                .filter(p -> !p.isActive())
+                .filter(p-> p.getAge()>30)
+                .toList();
+
+        IO.println("Inactive people older than 30 ");
+        inactiveOver30.forEach(p -> IO.println(p.getName()));
     }
+
+
 }
